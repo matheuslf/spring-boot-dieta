@@ -3,6 +3,7 @@ package spring.boot.dieta.controller;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,11 +20,8 @@ import spring.boot.dieta.service.DietaService;
 @RequestMapping("/api/dietas")
 public class DietaController {
 
-    private final DietaService dietaService;
-
-    public DietaController(DietaService dietaService) {
-        this.dietaService = dietaService;
-    }
+    @Autowired
+    private DietaService dietaService;
 
     @PostMapping("/adicionar")
     public ResponseEntity<Dieta> criarDieta(@RequestBody Dieta dieta) {
