@@ -20,8 +20,11 @@ import spring.boot.dieta.service.DietaService;
 @RequestMapping("/api/dietas")
 public class DietaController {
 
-    @Autowired
     private DietaService dietaService;
+
+    public DietaController() {
+        dietaService = new DietaService();
+    }
 
     @PostMapping("/adicionar")
     public ResponseEntity<Dieta> criarDieta(@RequestBody Dieta dieta) {
